@@ -25,10 +25,11 @@ run_analysis <- function() {
         #ll <- tidy_data[grepl("mean", names(tidy_data))]
         
         # get all "mean" and "std" columns from data set
-        mean_columns <- test_sets[grepl("mean", names(test_sets))]
-        std_columns <- test_sets[grepl("std", names(test_sets))]
+        test_mean_std_columns <- test_sets[grep("-(mean|std)\\(\\)", names(test_sets))]      
+        #mean_columns <- test_sets[grepl("mean", names(test_sets))]
+        #std_columns <- test_sets[grepl("std", names(test_sets))]
         
-        test_tidy_data <- cbind(test_subject_activities, mean_columns, std_columns)
+        test_tidy_data <- cbind(test_subject_activities, test_mean_std_columns)
 
         # now get the training data
         
@@ -50,14 +51,22 @@ run_analysis <- function() {
         #ll <- tidy_data[grepl("mean", names(tidy_data))]
         
         # get all "mean" and "std" columns from data set
-        train_mean_columns <- train_sets[grepl("mean", names(train_sets))]
-        train_std_columns <- train_sets[grepl("std", names(train_sets))]
+        train_mean_std_columns <- train_sets[grep("-(mean|std)\\(\\)", names(train_sets))]        
+        #train_mean_columns <- train_sets[grepl("mean", names(train_sets))]
+        #train_std_columns <- train_sets[grepl("std", names(train_sets))]
         
-        train_tidy_data <- cbind(train_subject_activities, train_mean_columns, train_std_columns)
+        train_tidy_data <- cbind(train_subject_activities, train_mean_std_columns)
         
         tidy_data <- rbind(test_tidy_data, train_tidy_data)
         
-        aggdata <-aggregate(tidy_data[,3:81], by=list(Subject = tidy_data$Subject, Activity = tidy_data$Activity), FUN=mean, na.rm=TRUE)
+        aggdata <-aggregate(tidy_data[,3:68], by=list(Subject = tidy_data$Subject, Activity = tidy_data$Activity), FUN=mean, na.rm=TRUE)
         
-        write.table(aggdata, "tidy_data.txt", row.names = FALSE )    
+        write.table(aggdata, "tidy_data.txt", row.names = FALSE )  
+        
+        # to view the data saved
+        # data <- read.table("tidy_data.txt", header = TRUE)
+        # View(data)
+        
+        # get the column names
+        # write.table(names(aggdata), "column_names.txt", row.names = FALSE)
 }
