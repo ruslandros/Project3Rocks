@@ -1,15 +1,14 @@
-	#DATA DICTIONARY Human Activity Recognition Using Smartphones
+#DATA DICTIONARY Human Activity Recognition Using Smartphones
 
 ##Subject
 
 ##Activity
-*WALKING
-*WALKING_UPSTAIRS
-*WALKING_DOWNSTAIRS
-*SITTING
-*STANDING
-*LAYING
-
+	* WALKING
+	* WALKING_UPSTAIRS
+	* WALKING_DOWNSTAIRS
+	* SITTING
+	* STANDING
+	* LAYING
 
 ##tBodyAcc-mean()-X
 ##BodyAcc-mean()-Y
