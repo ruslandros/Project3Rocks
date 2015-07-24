@@ -1,8 +1,10 @@
-#DATA DICTIONARY Human Activity Recognition Using Smartphones
+#DATA DICTIONARY for the tidy data set.
 
 ##Subject
+* Number from 1-30 representing the subject/volunteers for the experiment.
 
 ##Activity
+* These are the activities performed by each person/subject
 	* WALKING
 	* WALKING_UPSTAIRS
 	* WALKING_DOWNSTAIRS
